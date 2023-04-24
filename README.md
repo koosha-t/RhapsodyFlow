@@ -6,3 +6,6 @@ Transforming emotions into captivating melodies. Immerse yourself in a world whe
   <br>
   <em>RhapsodyFlow: Unleash Your Imagination in a World of Musical Dreams <br> (Art generated using MidJourney) </em>
 </p>
+
+## *MeloCode*: RhapsodyFlow's Custom Notation System
+__MeloCode__ is a notation system designed to enable effective communication between language models, humans, and other generative models about music.  MeloCode serves as a common language that simplifies interactions between different entities involved in the music creation process. 
