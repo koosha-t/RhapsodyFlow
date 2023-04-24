@@ -91,10 +91,11 @@ if __name__ == "__main__":
 
     # Example melody and chords in MeloCode notation
     melody_melocode = """(4/4) | 1/4C5 1/4D5 1/4E5 1/4F5 | 1/4G5 1/4A5 1/4B5 1/4C6 | 1/4C6 1/4B5 1/4A5 1/4G5 | 1/4F5 1/4E5 1/4D5 1/4C5 |"""
-    chords_melocode = """(4/4) | 1C3 1E3 1G3 1C4 | 1/2F3 1/2A3 1C4 1F4 | 1G3 1B3 1D4 1G4 | 1C3 1E3 1G3 1C4 |"""
+    chords_melocode = """(4/4) | 1/4C3 1/4E3 1/4G3 1/4C4 | 1/4F3 1/4A3 1/4C4 1/4F4 | 1/4G3 1/4B3 1/4D4 1/4G4 | 1/4C3 1/4E3 1/4G3 1/4C4 |"""
 
     # Play the melody and chords together
     play_melocode_with_chords(melody_melocode, chords_melocode)
+
 
 
 # if __name__ == "__main__":
