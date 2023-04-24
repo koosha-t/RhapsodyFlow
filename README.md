@@ -8,7 +8,16 @@ Transforming emotions into captivating melodies. Immerse yourself in a world whe
 </p>
 
 ## *MeloCode*: RhapsodyFlow's Custom Notation System
-__MeloCode__ is a notation system designed to enable effective communication between language models, humans, and other generative models about music.  MeloCode serves as a common language that simplifies interactions between different entities involved in the music creation process. Here is how the MeloCode notation system encodes music:
+__MeloCode__ is a notation system designed to enable effective communication between language models, humans, and other generative models about music.  MeloCode serves as a common language that simplifies interactions between different entities involved in the music creation process.
+
+<p align="center">
+  <img src="./readme_imgs/melocode.png" alt="Image Description" width="50%">
+  <br>
+  <em>The MeloCode </em>
+</p>
+
+
+ Here is how the MeloCode notation system encodes music:
 - *__Pitch__*
     - Uppercase letters for natural notes (C, D, E, F, G, A, B)
     - '#' for sharps and 'b' for flats (C#, Db, D#, Eb, F#, Gb, G#, Ab, A#, Bb)
