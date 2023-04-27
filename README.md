@@ -35,20 +35,25 @@ __MeloCode__ is a notation system designed to enable effective communication bet
     - R1/4: quarter rest (1/8E4 R1/4 1/8E4: eighth note E, quarter rest, eighth note E)
     - R1/8: eighth rest (1/4F4 R1/8 1/16F4: quarter note F, eighth rest, sixteenth note F)
     - R1/16: sixteenth rest (1/16G4 R1/16 1/32G4: sixteenth note G, sixteenth rest, thirty-second note G)
+-  *__Playing with both hands__*: Use two ampersands && to separate the right hand (treble clef) and left hand (bass clef) notations (i.e. anything before && is for the treble clef - right hand - and anything after && is for bass clef - the left hand.)
+    - Example:  | 1/4C4 1/4E4 1/4G4 1/4C5 && 1/4C2 1/4G2 1/4C3 1/4G3 |
 - *__Bar lines and time signature__*: '|' for bar lines and a tuple for the time signature.
     - (4/4): time signature (4 beats per measure, with a quarter note receiving one beat)
-    - The following example features a 4/4 time singnature and three measures separated by bar lines:
-        - (4/4) | 1/4C4 1/4E4 1/4G4 1/4C5 | R1/4 1/8D4 1/8F4 1/4A4 1/4D5 | R1/2 1/4E4 1/4G4 1/4E5 |
+    - The following example features a 4/4 time signature and three measures separated by bar lines for both hands:
+        - (4/4) | 1/4C4 1/4E4 1/4G4 1/4C5 && 1/4C2 1/4G2 1/4C3 1/4G3 | R1/4 1/8D4 1/8F4 1/4A4 1/4D5 && R1/2 1/4E2 1/4G2 1/4E3 | R1/2 1/4E4 1/4G4 1/4E5 && R1/2 1/4G2 1/4B2 1/4G3 |
 - *__Dynamics__* :  angle brackets with the first letter of the dynamic marking.
     - `<p>`: piano (soft)
     - `<f>`: forte (loud)
     - `<m>`: mezzo (medium)
-    - Example: (4/4) | `<p>` 1/4C4 1/4E4 `<m>` 1/4G4 `<f>` 1/4C5 | R1/4 `<p>` 1/8D4 1/8F4 `<f>` 1/4A4 1/4D5 | R1/2 `<m>` 1/4E4 1/4G4 1/4E5 |
+    - Example: (4/4) | <p> 1/4C4 1/4E4 <m> 1/4G4 <f> 1/4C5 && <p> 1/4C2 1/4G2 <m> 1/4C3 <f> 1/4G3 | R1/4 <p> 1/8D4 1/8F4 <f> 1/4A4 1/4D5 && R1/2 <p> 1/4E2 1/4G2 <f> 1/4E3 | R1/2 <m> 1/4E4 1/4G4 1/4E5 && R1/2 <m> 1/4G2 1/4B2 1/4G3 |
 - *__Ties__*:  A lowercase 't' followed by the pitch of the tied note.
     - If you want to tie two notes together, write the first note with its duration, followed by 't' and the pitch of the second note (without the duration).
-    - Example: 1/2C4 tC4: a half note C in the 4th octave tied to another C in the 4th octave.
+    - Example: (4/4) | 1/2C4 tC4 R1/2 && 1/2C2 tC2 R1/2 |: a half note C in the 4th octave tied to another C in the 4th octave in the treble clef, and a half note C in the 2nd octave tied to another C in the 2nd octave in the bass clef.
+- *__Chords__*: Use square brackets [ and ] to enclose pitches that should be played together as a chord, separating each pitch with a comma.
+    - Example: (4/4) | 1/4[C4,E4,G4] R1/2 && 1/4[C2,G2,C3] R1/2 |: a quarter note C major chord in the 4th octave in the treble clef, and a quarter note C major chord in the 2nd octave in the bass clef.
 - *__Repeats__*: Curly brackets to indicate repeats.
     - { ... }: repeat the section within the brackets
 
 
 
+ 
