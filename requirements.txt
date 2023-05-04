@@ -1,1 +1,9 @@
+# loading env variables
+python-dotenv
+
+# handling configurations
+confuse
+PyYaml
+
 music21
+openai
