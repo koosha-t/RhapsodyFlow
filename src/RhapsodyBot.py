@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import openai
+from rhapsody_agent import find_violating_measures, count_measures
 
 # Reading openai org and key from env variables
 env_path = os.path.join(os.path.dirname(__file__),f"../.env")
@@ -10,7 +11,7 @@ openai.api_key = os.getenv('openai_key')
 
 
 system_message=  """
-You are a professional classical music song writer who can write musing in MeloCode notation system; for Piano. 
+You are a professional classical music composer who can write musing in MeloCode notation system; for Piano. 
 The following is the MeloCode's description, delimited by '***': 
 
 ***
@@ -66,16 +67,9 @@ Use square brackets [ and ] to enclose pitches that should be played together as
 ```
 ***
 
-As a professional classical music song writer, your job is to give the users very good songs. You must follow these instructions:
-- Learn MeloCode in detail, become a master of MeloCode, take your time to learn! Read the provided examples in the MeloCode description very CAREFULLY. DO NOT VIOLATE THE RULES!
-- You answer in MeloCode ONLY - no English.
-- Please use ALL capabilities that MeloCode offer, the songs you create are advanced.
-- Use Chords in both clefs. Be Careful of duration of the chords. 
-- PLEASE, PLEASE, PLEASE, make sure the duration of each bar is correct.  
-
 """
 
-def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0.2):
+def get_completion_from_messages(messages, model="gpt-4", temperature=0.8):
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages,
@@ -86,19 +80,64 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0.
 
 
 user_prompt= """ 
-  As a songwriter, you have 7 tasks. Tasks 1 to 6 are supposed to prepare you for task 7.
-  Task 1: Define 3/4 time tigniture in details. 
-  Task 2: List the notes in the E-Minor scale.
-  Task 3: Write a few sample chords with various durations in MeloCode. Remember, duration comes before the chord; example: 1/4[C4,E4,G4]
-  Task 4: Write a few sample measures in '3/4' time signiture in MeloCode. The sum of durations in each bar for each hand must be equal to three quarter note beats per measure, use your response to task 1 as reference.
-  Task 5: Write a few sample measures containing chords in '3/4' time signiture in MeloCode. The sum of durations in each bar for each hand must be equal to three quarter note beats per measure.
-  Task 6: Write a few sample measures with both treble (write-hand) and bass (left-hand) clefs in '3/4' time signiture. The sum of durations in each bar for each hand must be equal to three quarter note beats per measure.
-  Task 7: Given your learnings throughout tasks 1 to 6, write a lovely and emotional song in MeloCode in the E-Minor scale and in '3/4' time signiture. The sum of durations in each bar for each hand must be equal to three quarter note beats per measure. Do not forget this general format for each measure: |[right-hand] && [left-hand]|. Don't forget about Chords' durations (e.g. 1/4[]). And remember, your output must be all in MeloCode, no English comments. 
+write a lovely and emotional song in MeloCode in the E-Minor scale and in '3/4' time signiture. Please ensure that the song has a beautiful harmony. The song should include at least 16 measures. Respond with the MeloCode score only, no other contexts should be in the response. 
 """
 
+print(f"{user_prompt}\n\n")
 messages = [
     {'role': 'system', 'content':system_message},
     {'role': 'user', 'content': user_prompt},
 ]
 
-print(get_completion_from_messages(messages=messages))
+base_flag = True
+while base_flag:
+  score = get_completion_from_messages(messages=messages)
+  print(f"{score}\n\n")
+  messages.append({'role':'assistant', 'content':score})
+  v_measures = find_violating_measures(time_signature='3/4', melocode=score)
+  if len(v_measures) > 0:
+     agent_message = f"The following measures violate the '3/4' time signiture:\n {v_measures}\n please fix them. Write the whole song again with the fixed measures. Write the MeloCode score only, don't explain anythin in English."
+     print(f"{agent_message}\n\n")
+     messages.append({'role':'user', 'content':agent_message})
+  else:
+     base_flag=False
+
+  
+make_it_better_flag = True
+user_prompt = f"""Make the following music more advanced. Give it more variation using MeloCode capabilities.\n {score}\n The new song can be up to 20 measures. Write the MeloCode score only, don't explain anythin in English."""
+print(f"{user_prompt}\n\n")
+messages = [
+  {'role': 'system', 'content':system_message},
+  {'role': 'user', 'content': user_prompt},
+]
+while make_it_better_flag:  
+  score = get_completion_from_messages(messages=messages)
+  print(f"{score}\n\n")
+  messages.append({'role':'assistant', 'content':score})
+  v_measures = find_violating_measures(time_signature='3/4', melocode=score)
+  if len(v_measures) > 0:
+    agent_message = f"The following measures violate the '3/4' time signiture:\n {v_measures}\n please fix them. Write the whole song again with the fixed measures. Write the MeloCode score only, don't explain anythin in English."
+    print(f"{agent_message}\n\n")
+    messages.append({'role':'user', 'content':agent_message})
+  else:
+    base_flag=False
+
+  
+make_it_better_flag = True
+user_prompt = f"""Make the following music more advanced. Give it more variation using MeloCode capabilities.\n {score}\n The new song can be up to 24 measures. Write the MeloCode score only, don't explain anythin in English."""
+print(f"{user_prompt}\n\n")
+messages = [
+  {'role': 'system', 'content':system_message},
+  {'role': 'user', 'content': user_prompt},
+]
+while make_it_better_flag:  
+  score = get_completion_from_messages(messages=messages)
+  print(f"{score}\n\n")
+  messages.append({'role':'assistant', 'content':score})
+  v_measures = find_violating_measures(time_signature='3/4', melocode=score)
+  if len(v_measures) > 0:
+    agent_message = f"The following measures violate the '3/4' time signiture:\n {v_measures}\n please fix them. Write the whole song again with the fixed measures. Write the MeloCode score only, don't explain anythin in English."
+    print(f"{agent_message}\n\n")
+    messages.append({'role':'user', 'content':agent_message})
+  else:
+    base_flag=False
