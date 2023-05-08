@@ -46,14 +46,7 @@ __MeloCode__ is a notation system designed to enable effective communication bet
     - `<f>`: forte (loud)
     - `<m>`: mezzo (medium)
     - Example: (4/4) | <p> 1/4C4 1/4E4 <m> 1/4G4 <f> 1/4C5 && <p> 1/4C2 1/4G2 <m> 1/4C3 <f> 1/4G3 | R1/4 <p> 1/8D4 1/8F4 <f> 1/4A4 1/4D5 && R1/2 <p> 1/4E2 1/4G2 <f> 1/4E3 | R1/2 <m> 1/4E4 1/4G4 1/4E5 && R1/2 <m> 1/4G2 1/4B2 1/4G3 |
-- *__Ties__*:  A lowercase 't' followed by the pitch of the tied note.
-    - If you want to tie two notes together, write the first note with its duration, followed by 't' and the pitch of the second note (without the duration).
-    - Example: (4/4) | 1/2C4 tC4 R1/2 && 1/2C2 tC2 R1/2 |: a half note C in the 4th octave tied to another C in the 4th octave in the treble clef, and a half note C in the 2nd octave tied to another C in the 2nd octave in the bass clef.
 - *__Chords__*: Use square brackets [ and ] to enclose pitches that should be played together as a chord, separating each pitch with a comma.
     - Example: (4/4) | 1/4[C4,E4,G4] R1/2 && 1/4[C2,G2,C3] R1/2 |: a quarter note C major chord in the 4th octave in the treble clef, and a quarter note C major chord in the 2nd octave in the bass clef.
-- *__Repeats__*: Curly brackets to indicate repeats.
-    - { ... }: repeat the section within the brackets
-
-
 
  
